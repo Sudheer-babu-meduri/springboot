@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+<h2>Edit User</h2>
+
+<form th:action="@{/update}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{uid}"/>
+    Username: <input type="text" th:field="*{username}" required/><br>
+    Password: <input type="password" th:field="*{password}" required/><br>
+    Email: <input type="email" th:field="*{email}" required/><br>
+    Phone: <input type="number" th:field="*{phone}" required/><br>
+    <button type="submit">Update</button>
+</form>
+
+<p th:if="${error}" style="color:red" th:text="${error}"></p>
+<p><a th:href="@{/users}">Back to All Users</a></p>
+</body>
+</html>
