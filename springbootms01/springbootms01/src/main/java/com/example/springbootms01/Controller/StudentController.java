@@ -21,6 +21,11 @@ public class StudentController {
 
 	@Autowired
 	Studentservice studentservice;
+
+	@PostMapping("/addStudent")
+  public Student addStudent(@Valid @RequestBody Student student) {
+    return studentservice.saveStudent(student);
+}
 	
 	//get student inf0
 	@GetMapping("/getAllStudents")
