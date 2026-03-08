@@ -33,15 +33,21 @@ public class Studentservice {
 	
 	//get Student
 	public StudentResponse getStudent(int id) {
-Student student = studentrepo.findById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Student not found with id : " + id));
-		
-		StudentResponse studentresponse = modelmapper.map(student, StudentResponse.class);
-		
-		Address address = restTemplate.getForObject("http://localhost:8181/api/v1/getAdd/{id}", Address.class, id);;
-		studentresponse.setAddress(address);      //("url of other service" ,Java Class, used{id} in the URL)
-		return studentresponse;
-	}
+
+    Student student = studentrepo.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Student not found with id : " + id));
+
+    StudentResponse studentResponse = modelmapper.map(student, StudentResponse.class);
+
+    Address[] addresses = restTemplate.getForObject(
+            "http://localhost:8181/api/v1/getAdd/{id}",
+            Address[].class,
+            id
+    );
+    studentResponse.setAddresses(Arrays.asList(addresses));
+
+    return studentResponse;
+   }
 }
 
 
