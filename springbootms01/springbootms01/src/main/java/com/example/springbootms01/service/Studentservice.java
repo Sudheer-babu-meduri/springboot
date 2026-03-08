@@ -33,7 +33,8 @@ public class Studentservice {
 	
 	//get Student
 	public StudentResponse getStudent(int id) {
-		Student student =  studentrepo.findById(id).orElseThrow();
+Student student = studentrepo.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Student not found with id : " + id));
 		
 		StudentResponse studentresponse = modelmapper.map(student, StudentResponse.class);
 		
