@@ -31,6 +31,10 @@ public class Studentservice {
 		return studentrepo.findAll();
 	}
 	
+	public Student saveStudent(Student student) {
+    return studentrepo.save(student);
+}
+	
 	//get Student
 	public StudentResponse getStudent(int id) {
 
