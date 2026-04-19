@@ -6,12 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-
+                                                      
 	@Entity
 	@Table(name = "student1")
 	@Data
 	public class Student {
-
+     
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		Integer sid;
@@ -19,6 +19,4 @@ import lombok.Data;
 		String lname;
 		int age;
 		String email;
-	
-		
 	}

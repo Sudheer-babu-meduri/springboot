@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.example.thymeleaf02.model.User;
 import com.example.thymeleaf02.service.UserService;
 
@@ -31,7 +30,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password , Model model) {
-		User user = userservice.getUserByUsernameAndPassword(username, password);
+		User user = userservice.findUSerByUsernameAndPassword(username, password);
 		//@RequestParam :Used to read single request parameters
 		if(user!=null) {
 			return "redirect:/users";
@@ -42,7 +41,7 @@ public class UserController {
 
 	@PostMapping("/save")
 	public String saveUser(@ModelAttribute User user) {
-		//Used to bind multiple request parameters to a Java object (DTO / Model class).
+ //@ModelAttribute Used to bind multiple request parameters to a Java object (DTO / Model class).
 		userservice.insertUser(user);
 		return "redirect:/users";
 	}
@@ -52,7 +51,7 @@ public class UserController {
 		model.addAttribute("users", userservice.getAllUsers());
 		return "users";
 	}
-//	@RequestParam is for individual request values,
+//	@RequestParam(for form data) is for individual request values,
 //	whereas @ModelAttribute is for binding entire form data into an object.
 	
 }

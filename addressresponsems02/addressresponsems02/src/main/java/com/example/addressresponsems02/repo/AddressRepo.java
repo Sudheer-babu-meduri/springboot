@@ -19,8 +19,6 @@ public interface AddressRepo extends JpaRepository<Address, Integer>{
 		               "FROM address2 sa " +
 		               "JOIN student2 s ON s.id = sa.student_id " +
 		               "WHERE sa.student_id = :sid")
-
-
 		Optional<Address> findAddressByStudentId(@Param("sid") int sid);
 
 }

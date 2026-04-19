@@ -2,7 +2,7 @@ package com.example.uservalidation.entity;
 
 
 import jakarta.persistence.*;
-
+               
 @Entity
 @Table(name = "users"
 //       uniqueConstraints = {
@@ -10,8 +10,8 @@ import jakarta.persistence.*;
 //           @UniqueConstraint(columnNames = "phone_number"),
 //           @UniqueConstraint(columnNames = "user_name")
        )
-public class User {
-
+   public class User {
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,12 +20,12 @@ public class User {
     private String userName;
 
 //    @Column(nullable = false, unique = true)
-    private String email;
+    private String email;               
 
 //    @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
 
-    // Getters and Setters
+    // Getters and Setters 
     public Long getId() { return id; }
 
     public String getUserName() { return userName; }

@@ -2,7 +2,7 @@ package com.example.restaurantservice.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,39 +10,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.restaurantservice.model.FoodItems;
 import com.example.restaurantservice.model.Restaurant;
-import com.example.restaurantservice.service.FoodItemsService;
 import com.example.restaurantservice.service.RestaurantService;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/restaurant")
 public class RestaurantController {
   
-	@Autowired
-	RestaurantService restaurantService;
-	
-	@Autowired
-	FoodItemsService foodItemsService;
-	
-	@PostMapping("addRes")
-	public  Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
-		return restaurantService.createrestaurant(restaurant);
-	}
-	@GetMapping("getRes/{id}")
-	public  Restaurant getRestaurant(@PathVariable int id) {
-		return restaurantService.getrestaurantById(id);
-	}
-	
-	@PostMapping("addItems")
-	public FoodItems createFoodItems(@RequestBody FoodItems foodItems) {
-        return foodItemsService.createfoodItems(foodItems);
-      }
-	
-	@GetMapping("getItems/{id}")
-	public List<FoodItems> getFoodItems(@PathVariable int id){
-		return foodItemsService.findByRestaurantId(id);
-	}
-	
-	
+	 private final RestaurantService restaurantService;
+
+	    public RestaurantController(RestaurantService restaurantService) {
+	        this.restaurantService = restaurantService;
+	    }
+
+	    // Add a new restaurant
+	    @PostMapping("/addRes")
+	    public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+	        return restaurantService.addRestaurant(restaurant);
+	    }
+
+	    // Get all restaurants
+	    @GetMapping("/getAllRes")
+	    public List<Restaurant> getAllRestaurants() {
+	        return restaurantService.getAllRestaurants();
+	    }
+
+	    // Get restaurant by ID
+	    @GetMapping("/getByID/{id}")
+	    public Restaurant getRestaurantById(@PathVariable int id) {
+	        return restaurantService.getRestaurantById(id);
+	    }
+
+	    // Delete a restaurant
+	    @DeleteMapping("/deleteByID/{id}")
+	    public String deleteRestaurant(@PathVariable int id) {
+	        restaurantService.deleteRestaurant(id);
+	        return "Restaurant with ID " + id + " deleted successfully!";
+	    }
 }

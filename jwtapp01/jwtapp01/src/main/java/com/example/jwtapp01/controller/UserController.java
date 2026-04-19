@@ -1,0 +1,30 @@
+package com.example.jwtapp01.controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.jwtapp01.utility.JwtUtil;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+	@GetMapping("/profile")
+	public String profile(@RequestHeader("Authorization") String authHeader) {
+
+		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+			return "Token Missing!";
+		}
+
+		String token = authHeader.substring(7); // remove "Bearer "
+
+		if (!JwtUtil.validateToken(token)) {
+			return "Invalid Token!";
+		}
+
+		String username = JwtUtil.extractUsername(token);
+
+		return "Welcome " + username + ", this is your profile data!";
+	}
+}

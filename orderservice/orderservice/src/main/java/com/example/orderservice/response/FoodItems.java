@@ -10,4 +10,5 @@ public class FoodItems {
 	String name;
 	double price;
 	Restaurant restaurant;
+	
 }

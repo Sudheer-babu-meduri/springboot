@@ -41,8 +41,10 @@ public class UserController {
         if (user != null) {
             return "redirect:/users"; // show all users after login
         }
+        else{
         model.addAttribute("error", "Invalid User Credentials");
         return "login";
+        }
     }
 
     // Handle signup
@@ -51,12 +53,12 @@ public class UserController {
         if (userService.getUserByUsername(user.getUsername()) != null) {
             model.addAttribute("error", "Username already exists!");
             return "add-user";
-        }
+        }else {
         userService.insertUser(user);
         model.addAttribute("message", "Sign up successful! Please log in.");
         return "login";
+       }
     }
-
     // Show all users
     @GetMapping("/users")
     public String getAllUsers(Model model) {
@@ -80,8 +82,17 @@ public class UserController {
         if (existingUser != null && existingUser.getUid() != user.getUid()) {
             model.addAttribute("error", "Username already exists!");
             return "edit-user";
-        }
+        }else {
         userService.updateUser(user);
         return "redirect:/users";
+        }
     }
+    
+ // Handle delete
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.deleteUserById(id);
+        return "redirect:/users";
+    }
+
 }

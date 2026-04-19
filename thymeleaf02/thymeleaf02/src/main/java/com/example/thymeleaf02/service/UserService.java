@@ -13,7 +13,7 @@ public class UserService {
 
 	@Autowired
 	UserRepo userrepo;
-	public User getUserByUsernameAndPassword(String username,String password) {
+	public User findUSerByUsernameAndPassword(String username,String password) {
 		return userrepo.findUSerByUsernameAndPassword(username, password);
 	}
 	//*************************************************8

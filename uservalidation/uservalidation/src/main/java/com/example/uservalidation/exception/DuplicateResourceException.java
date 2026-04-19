@@ -1,9 +1,8 @@
 package com.example.uservalidation.exception;
 
 
-public class DuplicateResourceException extends RuntimeException {
+ public class DuplicateResourceException extends RuntimeException {
     public DuplicateResourceException(String message) {
         super(message);
     }
 }
-

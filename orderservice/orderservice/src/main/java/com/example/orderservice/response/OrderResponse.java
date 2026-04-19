@@ -5,11 +5,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class OrderResponse {
+public class OrderResponse { 
 
 	String customerName;
 	Restaurant restaurant;
 	FoodItems foodItems;
-	 
 	 
 }

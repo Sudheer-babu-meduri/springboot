@@ -1,5 +1,7 @@
 package com.example.restaurantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +25,11 @@ public class FoodItems {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	double price;
+	Double price;
 	
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id" ,referencedColumnName = "id" )
+	@JsonBackReference
 	Restaurant restaurant;
 	
 }

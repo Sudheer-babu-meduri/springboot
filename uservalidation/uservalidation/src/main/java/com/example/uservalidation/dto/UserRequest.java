@@ -5,15 +5,15 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 @Data
-public class UserRequest {
+public class UserRequest { 
      
-    // Username must:
-    // - Start with a letter
-    // - Contain letters and digits only
-    // - Length between 3 and 20
+    /* Username must:
+     - Start with a letter
+     - Contain letters and digits only
+     - Length between 3 and 20 */
     @NotBlank(message = "Username is required")
     @Pattern(
-    	    regexp = "^[A-Za-z][A-Za-z0-9 ]{2,19}$",
+    	    regexp = "^[A-Za-z][A-Za-z ]{2,19}$",
     	    message = "Username must start with a letter and can contain letters, digits, or spaces (3-20 chars)"
     	)
     
@@ -33,7 +33,8 @@ public class UserRequest {
         message = "Phone number must be 10 digits and start with 6,7,8 or 9"
     )
     private String phoneNumber;
-
+}
+    
 //    1️⃣ Method: handleDuplicate
 //    @ExceptionHandler(DuplicateResourceException.class)
 //    public ResponseEntity<String> handleDuplicate(DuplicateResourceException ex) {
@@ -151,4 +152,4 @@ public class UserRequest {
 //    Without it, Spring shows default 500 error or messy JSON
 //
 //    With it, your API responses are clean, readable, and user-friendly
-}
+

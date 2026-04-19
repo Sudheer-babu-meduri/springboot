@@ -1,8 +1,9 @@
 package com.example.uservalidation.service;
 
-import com.example.uservalidation.dto.UserRequest;
+ import com.example.uservalidation.dto.UserRequest;
+import com.example.uservalidation.entity.User;
 
 public interface UserService {
-    void registerUser(UserRequest request);
+    User registerUser(UserRequest request);
 }
 

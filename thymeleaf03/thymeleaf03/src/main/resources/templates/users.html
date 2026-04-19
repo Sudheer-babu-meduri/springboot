@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>All Users</title>
+<meta charset="UTF-8">
+<title>All Users</title>
 </head>
 <body>
-<h1>All Users</h1>
-<hr />
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.uid}"></td>
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.password}"></td>
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.phone}"></td>
-            <td>
-                <a th:href="@{/edit/{id}(id=${user.uid})}">Edit</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<p><a th:href="@{/}">Back to Home</a></p>
+	<h1>All Users</h1>
+	<hr />
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.uid}"></td>
+				<td th:text="${user.username}"></td>
+				<td th:text="${user.password}"></td>
+				<td th:text="${user.email}"></td>
+				<td th:text="${user.phone}"></td>
+				<td>  
+				    <a th:href="@{/edit/{id}(id=${user.uid})}">Edit</a> | 
+				    <a th:href="@{/delete/{id}(id=${user.uid})}">Delete</a>
+ 				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<a th:href="@{/}">Back to Home</a>
+	</p>
 </body>
 </html>

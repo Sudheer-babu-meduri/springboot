@@ -7,5 +7,6 @@ import com.example.springbootms01.model.Student;
 
 @Repository
 public interface StudentRepo extends JpaRepository<Student, Integer>{
- 
+  
 }
+

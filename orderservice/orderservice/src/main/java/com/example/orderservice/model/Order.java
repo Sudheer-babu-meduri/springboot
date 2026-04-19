@@ -15,13 +15,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-	
-	
+  
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	Integer restaurantId;
-	Integer foodItemId;
+	Integer restaurant_Id1;
+	Integer food_Item_Id1;
 	String customerName;
-
+	
+	
+	
 }

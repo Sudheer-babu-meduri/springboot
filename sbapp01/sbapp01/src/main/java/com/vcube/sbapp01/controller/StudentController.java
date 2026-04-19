@@ -22,10 +22,15 @@ import com.vcube.sbapp01.repo.StudentRepo;
 @RestController
 @RequestMapping("api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
-public class StudentController {
+ public class StudentController {
 
 	@Autowired
 	StudentRepo studentrepo;
+	
+	@GetMapping("/meduri")
+	String getDetails() {
+		return "MEDURI SUDHEER BABU";
+	}
 	
 	// 1) for inserting into data base
 	// http://localhost:9999/api/v1/insertStudent
@@ -81,6 +86,7 @@ public class StudentController {
 	existStudent.setCity(student.getCity());
 	 
 	return studentrepo.save(existStudent);
+
 	}
 	
 	//7)Deleting a student based on ID
@@ -92,4 +98,4 @@ public class StudentController {
 		return "Student "+sid+" has been deleted";
 	}
 	
-}
+ }

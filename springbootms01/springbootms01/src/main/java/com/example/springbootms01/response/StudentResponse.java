@@ -1,5 +1,7 @@
 package com.example.springbootms01.response;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -11,8 +13,6 @@ public class StudentResponse {
 		int age;
 		String email;
 		
-		Address address;
 		
+		List<Address> addresses;
 	}
-
-

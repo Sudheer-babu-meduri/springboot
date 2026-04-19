@@ -15,7 +15,7 @@
     <button type="submit">Sign Up</button>
 </form>
 
-<p th:if="${error}" style="color:red" th:text="${error}"></p>
-<p>Already have an account? <a th:href="@{/loginPage}">Login</a></p>
+<p th:text="${error}" style="color:red" ></p>
+<p>Already have an account? <a th:href="@{/loginPage}">" Login</a></p>
 </body>
 </html>

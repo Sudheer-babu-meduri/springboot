@@ -13,8 +13,8 @@
     <button type="submit">Login</button>
 </form>
 
-<p th:if="${message}" style="color:green" th:text="${message}"></p>
-<p th:if="${error}" style="color:red" th:text="${error}"></p>
+<p th:text="${message}" style="color:green"></p>
+<p th:text="${error}" style="color:red"  ></p>
 
 <p>Don't have an account? <a th:href="@{/add}">Sign Up</a></p>
 </body>

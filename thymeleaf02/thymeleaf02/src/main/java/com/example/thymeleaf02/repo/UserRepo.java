@@ -9,6 +9,4 @@ import com.example.thymeleaf02.model.User;
 public interface UserRepo extends JpaRepository<User, Integer>{
 
 	User findUSerByUsernameAndPassword(String username,String password);
-	
-	
 }
