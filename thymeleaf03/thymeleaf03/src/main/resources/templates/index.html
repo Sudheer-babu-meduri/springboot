@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h2>Welcome to My App</h2>
+
+<form th:action="@{/add}" method="get">
+    <button type="submit">Sign Up</button>
+</form>
+<!-- It does not submit any data to the server yet
+So using GET here is correct ✅
+GET requests are used for retrieving pages or data, not for changing the database. -->  
+
+<br><br>
+<form th:action="@{/loginPage}" method="get">
+    <button type="submit">Sign In</button>
+</form>
+</body>
+</html>
